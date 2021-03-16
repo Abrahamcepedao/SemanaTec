@@ -2,13 +2,22 @@ from turtle import *
 from freegames import vector
 import math
 
+# La función se llama line
+# parametro de entrada: start y end
+# parametro de salida: N/A (no regresa valores)
+# Descripcion: dibuja una linea dados 2 pixeles (donde empieza y donde termina)
 def line(start, end):
     "Draw line from start to end."
     up()
     goto(start.x, start.y)
     down()
     goto(end.x, end.y)
-
+    
+# La función se llama square
+# parametro de entrada: start y end
+# parametro de salida: N/A (no regresa valores)
+# Descripcion: dibuja una rectangulo dados 2 pixeles (donde empieza y donde termina)
+# lo rellena utilizando un for, creando curvas de 90º
 def square(start, end):
     "Draw square from start to end."
     up()
@@ -40,11 +49,21 @@ def circle(start, end):
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
+    
     pass  # TODO
 
 def triangle(start, end):
     "Draw triangle from start to end."
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(2):
+        forward(end.x - start.x)
+        left(60)
+
+    end_fill()
 
 def tap(x, y):
     "Store starting point or draw shape."
