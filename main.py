@@ -12,7 +12,8 @@ def line(start, end):
     goto(start.x, start.y)
     down()
     goto(end.x, end.y)
-    
+
+
 # La función se llama square
 # parametro de entrada: start y end
 # parametro de salida: N/A (no regresa valores)
@@ -24,13 +25,10 @@ def square(start, end):
     goto(start.x, start.y)
     down()
     begin_fill()
-
     for count in range(4):
         forward(end.x - start.x)
         left(90)
-
     end_fill()
-
 def circle(start, end):
     up()
     goto(start.x, start.y)
@@ -49,11 +47,24 @@ def circle(start, end):
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
     
-    pass  # TODO
+    forward(start.x - end.x)
+    right(90)
+    forward(start.y - end.y)
+    left(90)
+    forward(end.x - start.x)
+    right(90)
+    forward(end.y - start.y)
+
+    end_fill()
 
 def triangle(start, end):
     "Draw triangle from start to end."
+    pass  # TODO
     up()
     goto(start.x, start.y)
     down()
@@ -68,7 +79,6 @@ def triangle(start, end):
 def tap(x, y):
     "Store starting point or draw shape."
     start = state['start']
-
     if start is None:
         state['start'] = vector(x, y)
     else:
@@ -76,11 +86,9 @@ def tap(x, y):
         end = vector(x, y)
         shape(start, end)
         state['start'] = None
-
 def store(key, value):
     "Store value in state at key."
     state[key] = value
-
 state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0)
 onscreenclick(tap)
