@@ -17,7 +17,7 @@ def line(start, end):
 # La función se llama square
 # parametro de entrada: start y end
 # parametro de salida: N/A (no regresa valores)
-# Descripcion: dibuja una rectangulo dados 2 pixeles (donde empieza y donde termina)
+# Descripcion: dibuja un cuadrado dados 2 pixeles (donde empieza y donde termina)
 # lo rellena utilizando un for, creando curvas de 90º
 def square(start, end):
     "Draw square from start to end."
@@ -29,6 +29,12 @@ def square(start, end):
         forward(end.x - start.x)
         left(90)
     end_fill()
+    
+# La función se llama circle
+# parametro de entrada: start y end
+# parametro de salida: N/A (no regresa valores)
+# Descripcion: dibuja un círculo dados 2 pixeles (donde empieza y donde termina)
+# calcula el diámetro y la circunferencia y lo rellena.
 def circle(start, end):
     up()
     goto(start.x, start.y)
@@ -45,6 +51,11 @@ def circle(start, end):
         
     end_fill()
 
+# La función se llama rectangle
+# parametro de entrada: start y end
+# parametro de salida: N/A (no regresa valores)
+# Descripcion: dibuja una rectangulo dados 2 pixeles (donde empieza y donde termina)
+# lo rellena utilizando un for, creando curvas de 90º
 def rectangle(start, end):
     "Draw rectangle from start to end."
     up()
@@ -61,7 +72,12 @@ def rectangle(start, end):
     forward(end.y - start.y)
 
     end_fill()
-
+    
+# La función se llama triangle
+# parametro de entrada: start y end
+# parametro de salida: N/A (no regresa valores)
+# Descripcion: dibuja una triágulo dados 2 pixeles (donde empieza y donde termina)
+# lo rellena utilizando un for, creando curvas o vuelta de 60º
 def triangle(start, end):
     "Draw triangle from start to end."
     pass  # TODO
@@ -76,6 +92,8 @@ def triangle(start, end):
 
     end_fill()
 
+# la funcion tap ayuda a definir los puntos donde se empieza y donde termina
+# estos son los parametros que toman las demas funciones para dibujar las figuras
 def tap(x, y):
     "Store starting point or draw shape."
     start = state['start']
@@ -86,6 +104,8 @@ def tap(x, y):
         end = vector(x, y)
         shape(start, end)
         state['start'] = None
+
+# ayuda a definir los defaults
 def store(key, value):
     "Store value in state at key."
     state[key] = value
@@ -93,6 +113,8 @@ state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0)
 onscreenclick(tap)
 listen()
+# estos son los diferentes colores y figuras que se pueden dibujar al presionar la letra del teclado correspondiente
+# la funcion 'onkey' tiene como parametros una funcion sin argumentos y una tecla
 onkey(undo, 'u')
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
